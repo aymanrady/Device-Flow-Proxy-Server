@@ -2,11 +2,15 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$templates = new League\Plates\Engine(dirname(__FILE__).'/../views');
-
 class RedirectTest extends PHPUnit\Framework\TestCase {
 
-  public function testEmptyRequest() {
+    public static function setUpBeforeClass(): void
+    {
+        global $templates;
+        $templates = new League\Plates\Engine(dirname(__FILE__).'/../views');
+    }
+
+    public function testEmptyRequest() {
     $controller = new Controller();
 
     $request = new Request();

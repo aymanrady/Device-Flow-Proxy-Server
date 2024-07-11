@@ -20,11 +20,11 @@ class GenerateDeviceCodeTest extends PHPUnit\Framework\TestCase {
     $response = $controller->generate_code($request, $response);
     $data = json_decode($response->getContent());
     # Make sure there's no error
-    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertObjectNotHasProperty('error', $data);
     # Check the expected properties exist
-    $this->assertObjectHasAttribute('device_code', $data);
-    $this->assertObjectHasAttribute('user_code', $data);
-    $this->assertObjectHasAttribute('verification_uri', $data);
+    $this->assertObjectHasProperty('device_code', $data);
+    $this->assertObjectHasProperty('user_code', $data);
+    $this->assertObjectHasProperty('verification_uri', $data);
     # Make sure the values are as expected
     $this->assertStringMatchesFormat('%x', $data->device_code);
     $this->assertStringMatchesFormat('%s', $data->user_code);
@@ -43,7 +43,7 @@ class GenerateDeviceCodeTest extends PHPUnit\Framework\TestCase {
     $response = $controller->generate_code($request, $response);
     $data = json_decode($response->getContent());
     # Make sure there's no error
-    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertObjectNotHasProperty('error', $data);
     # Check that the info is cached against the user code
     $cache = Cache::get(str_replace('-','',$data->user_code));
     $this->assertNotNull($cache);

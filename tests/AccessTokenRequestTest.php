@@ -80,7 +80,7 @@ class AccessTokenRequestTest extends PHPUnit\Framework\TestCase {
     $request = new Request(['response_type'=>'device_code', 'client_id'=>'x']);
     $response_data = $controller->generate_code($request, $response);
     $data = json_decode($response_data->getContent());
-    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertObjectNotHasProperty('error', $data);
 
     $device_code = $data->device_code;
 
@@ -100,7 +100,7 @@ class AccessTokenRequestTest extends PHPUnit\Framework\TestCase {
     $request = new Request(['response_type'=>'device_code', 'client_id'=>'x']);
     $response_data = $controller->generate_code($request, $response);
     $data = json_decode($response_data->getContent());
-    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertObjectNotHasProperty('error', $data);
 
     $device_code = $data->device_code;
 
@@ -119,7 +119,7 @@ class AccessTokenRequestTest extends PHPUnit\Framework\TestCase {
     $response_data = $controller->access_token($request, $response);
     $data = json_decode($response_data->getContent());
 
-    $this->assertObjectNotHasAttribute('error', $data);
+    $this->assertObjectNotHasProperty('error', $data);
     $this->assertEquals('abc123', $data->access_token);
     $this->assertEquals(600, $data->expires_in);
     $this->assertEquals('foo', $data->custom);

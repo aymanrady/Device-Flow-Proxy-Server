@@ -1,13 +1,13 @@
 {
   "require": {
-    "php": "^7.2.0",
-    "league/route": "~1.2",
-    "league/plates": "~3.1",
-    "predis/predis": "^1.1",
+    "php": "^8.2",
+    "league/route": "^1.2",
+    "league/plates": "^3.5",
+    "predis/predis": "^2.2",
     "vlucas/phpdotenv": "^3.6"
   },
   "require-dev": {
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "^11.2"
   },
   "autoload": {
     "files": [
